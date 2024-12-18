@@ -1,95 +1,27 @@
-# API Key and Token Leaks
+# api_wordlist
 
-> API keys and tokens are forms of authentication commonly used to manage permissions and access to both public and private services. Leaking these sensitive pieces of data can lead to unauthorized access, compromised security, and potential data breaches.
+A wordlist of API names used for fuzzing web application APIs.
 
-## Summary
+## Contents
 
-- [Tools](#tools)
-- [Methodology](#exploit)
-    - [Common Causes of Leaks](#common-causes-of-leaks)
-    - [Validate The API Key](#validate-the-api-key)
-- [References](#references)
+- api_seen_in_wild.txt - This contains API function names I've seen in the wild.
+- actions.txt - All API function name verbs
+- objects.txt - All API function name nouns
+- actions-uppercase.txt - API function name verbs with leading character upper-case
+- actions-lowercase.txt - API function name verbs with leading character lower-case
+- objects-uppercase.txt - API function name nouns with leading character upper-case
+- objects-lowercase.txt - API function name nouns with leading character lower-case
 
+## Usage
 
-## Tools
+1.  In burpsuite, send an API request you want to fuzz to Intruder.
+2.  Remove the existing API function call, and replace it with two § characters for each text file you want to use.
+3.  On the "Positions" tab, set Attack type to "Cluster Bomb".
+4.  On the "Payloads" tab, select 1 for the fist Payload set drop-down, then select a Payload type of "Runtime file" and navigate to the directory you downloaded these text files to. Select "actions.txt".
+5.  Repeat step 4 by setting Payload set 2 to "objects.txt".
+6.  (optional step - add more payload sets and set them to "objects.txt" to test for multi-part objects like "UserAccount")
+7.  Start attack!
 
-- [aquasecurity/trivy](https://github.com/aquasecurity/trivy) - General purpose vulnerability and misconfiguration scanner which also searches for API keys/secrets
-- [blacklanternsecurity/badsecrets](https://github.com/blacklanternsecurity/badsecrets) - A library for detecting known or weak secrets on across many platforms
-- [d0ge/sign-saboteur](https://github.com/d0ge/sign-saboteur) - SignSaboteur is a Burp Suite extension for editing, signing, verifying various signed web tokens
-- [mazen160/secrets-patterns-db](https://github.com/mazen160/secrets-patterns-db) - Secrets Patterns DB: The largest open-source Database for detecting secrets, API keys, passwords, tokens, and more.
-- [momenbasel/KeyFinder](https://github.com/momenbasel/KeyFinder) - is a tool that let you find keys while surfing the web
-- [streaak/keyhacks](https://github.com/streaak/keyhacks) - is a repository which shows quick ways in which API keys leaked by a bug bounty program can be checked to see if they're valid
-- [trufflesecurity/truffleHog](https://github.com/trufflesecurity/truffleHog) - Find credentials all over the place
-- [projectdiscovery/nuclei-templates](https://github.com/projectdiscovery/nuclei-templates) - Use these templates to test an API token against many API service endpoints
-    ```powershell
-    nuclei -t token-spray/ -var token=token_list.txt
-    ```
+## Comments
 
-
-## Methodology
-
-* **API Keys**: Unique identifiers used to authenticate requests associated with your project or application.
-* **Tokens**: Security tokens (like OAuth tokens) that grant access to protected resources.
-     
-### Common Causes of Leaks
-
-* **Hardcoding in Source Code**: Developers may unintentionally leave API keys or tokens directly in the source code.
-
-    ```py     
-    # Example of hardcoded API key
-    api_key = "1234567890abcdef"
-    ```
-
-* **Public Repositories**: Accidentally committing sensitive keys and tokens to publicly accessible version control systems like GitHub.
-
-    ```ps1
-    ## Scan a Github Organization
-    docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --org=trufflesecurity
-    
-    ## Scan a GitHub Repository, its Issues and Pull Requests
-    docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys --issue-comments --pr-comments
-    ```
-
-* **Hardcoding in Docker Images**: API keys and credentials might be hardcoded in Docker images hosted on DockerHub or private registries.
-
-    ```ps1
-    # Scan a Docker image for verified secrets
-    docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest docker --image trufflesecurity/secrets
-    ```
-
-* **Logs and Debug Information**: Keys and tokens might be inadvertently logged or printed during debugging processes.
-
-* **Configuration Files**: Including keys and tokens in publicly accessible configuration files (e.g., .env files, config.json, settings.py, or .aws/credentials.).
-
-
-### Validate The API Key
-
-If assistance is needed in identifying the service that generated the token, [mazen160/secrets-patterns-db](https://github.com/mazen160/secrets-patterns-db) can be consulted. It is the largest open-source database for detecting secrets, API keys, passwords, tokens, and more. This database contains regex patterns for various secrets.
-
-```yaml
-patterns:
-  - pattern:
-      name: AWS API Gateway
-      regex: '[0-9a-z]+.execute-api.[0-9a-z._-]+.amazonaws.com'
-      confidence: low
-  - pattern:
-      name: AWS API Key
-      regex: AKIA[0-9A-Z]{16}
-      confidence: high
-```
-
-Use [streaak/keyhacks](https://github.com/streaak/keyhacks) or read the documentation of the service to find a quick way to verify the validity of an API key.
-
-* **Example**: Telegram Bot API Token
-
-    ```ps1
-    curl https://api.telegram.org/bot<TOKEN>/getMe
-    ```
-
-
-## References
-
-* [Finding Hidden API Keys & How to Use Them - Sumit Jain - August 24, 2019](https://web.archive.org/web/20191012175520/https://medium.com/@sumitcfe/finding-hidden-api-keys-how-to-use-them-11b1e5d0f01d)
-* [Introducing SignSaboteur: Forge Signed Web Tokens with Ease - Zakhar Fedotkin - May 22, 2024](https://portswigger.net/research/introducing-signsaboteur-forge-signed-web-tokens-with-ease)
-* [Private API Key Leakage Due to Lack of Access Control - yox - August 8, 2018](https://hackerone.com/reports/376060)
-* [Saying Goodbye to My Favorite 5 Minute P1 - Allyson O'Malley - January 6, 2020](https://www.allysonomalley.com/2020/01/06/saying-goodbye-to-my-favorite-5-minute-p1/)
+If you use this and it's helpful, I'd love to hear about it! (@unl0ckd@fosstodon.org). If you think I've missed any obvious word choices, I'd love to hear about that as well, or feel free to add them.
