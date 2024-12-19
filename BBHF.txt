@@ -1,0 +1,286 @@
+Bug Bounty Hunting Flow
+
+
+1. Reconnaissance
+
+   Gather as much information as possible about the target.
+
+   Tools and Techniques:
+
+   - Subdomain Enumeration:
+
+     Use tools like subfinder, amass, assetfinder, and shuffledns.
+
+     Example command:
+
+       subfinder -d target.com -o subdomains.txt
+
+   - DNS Enumeration:
+
+     Use tools like dnsx to resolve subdomains.
+
+     Example command:
+
+       dnsx -l subdomains.txt -resp -o resolved.txt
+
+   - Port Scanning:
+
+     Use tools like nmap, masscan, and naabu.
+
+     Example command:
+
+       nmap -sV -Pn -T4 -iL resolved.txt
+
+   - Web Asset Discovery:
+
+     Use tools like gau, waybackurls, and katana.
+
+     Example commands:
+
+       gau target.com | tee urls.txt
+
+       katana -u target.com -o endpoints.txt
+
+   - Technology Fingerprinting:
+
+     Use tools like whatweb and Wappalyzer.
+
+
+
+2. Asset Analysis
+
+   Focus on identifying unique characteristics of the target's endpoints or domains.
+
+
+
+   Analyze:
+
+   - Endpoints: Look for API endpoints, subdomains, and web pages.
+
+   - Headers: Inspect security headers like CSP and HSTS using commands like curl -I <url>.
+
+   - Source Code: Analyze for hardcoded keys, tokens, or sensitive information.
+
+
+
+3. Vulnerability Hunting
+
+   Systematically search for vulnerabilities based on the target's functionality.
+
+
+
+   Common Vulnerabilities:
+
+   - Injection Flaws:
+
+     SQL Injection: Use tools like sqlmap to test for vulnerabilities.
+
+     Command Injection: Look for unsanitized user input.
+
+   - Authentication Issues:
+
+     - Default Credentials: Check if common default passwords are in use.
+
+     - Password Policy Weaknesses: Test for short, weak, or guessable passwords.
+
+     - Session Fixation: Ensure session tokens are renewed after login.
+
+   - Cross-Site Scripting (XSS):
+
+     - Reflected XSS: Inject payloads in URL parameters or forms.
+
+     - Stored XSS: Identify locations where input is stored and reflected to other users.
+
+     - DOM-Based XSS: Test for unsafe client-side JavaScript code execution.
+
+   - File Upload Vulnerabilities:
+
+     - MIME Type Validation: Check if file uploads are restricted by MIME type only.
+
+     - File Path Traversal: Exploit directory traversal in file uploads (e.g., ../../shell.php).
+
+   - Insecure Direct Object References (IDOR):
+
+     Test if changing parameters like user_id=123 exposes other users' data.
+
+   - Directory Traversal:
+
+     Test for access to unauthorized directories using payloads like ../../etc/passwd.
+
+   - Information Disclosure:
+
+     - Sensitive Files: Identify exposed files like .env, .git, or backup files.
+
+     - Verbose Error Messages: Inspect responses for stack traces or sensitive information.
+
+   - Weak Security Configurations:
+
+     - Missing HTTPS: Check if sensitive data is transmitted over plain HTTP.
+
+     - Misconfigured Security Headers: Analyze CSP, HSTS, X-Frame-Options, etc.
+
+   - Weak Rate Limiting:
+
+     Test for endpoints vulnerable to brute force or abuse.
+
+
+
+   Tools:
+
+   - Burp Suite: For intercepting requests and testing payloads.
+
+   - Ffuf or Dirb: For directory and file brute-forcing.
+
+   - Nuclei: For automating scans with vulnerability templates.
+
+
+
+4. Advanced Vulnerability Testing
+
+   Explore deeper vulnerabilities using specialized techniques.
+
+
+
+   Techniques:
+
+   - CORS Misconfigurations:
+
+     Check for headers like Access-Control-Allow-Origin: *.
+
+   - XXE Injection:
+
+     Exploit XML parsers to access sensitive files like /etc/passwd.
+
+   - Subdomain Takeover:
+
+     Detect unclaimed subdomains using tools like subjack or tko-subs.
+
+   - SSRF (Server-Side Request Forgery):
+
+     Test for callbacks using Burp Collaborator or Interactsh.
+
+   - WAF Bypass:
+
+     Experiment with encodings, payload modifications, or malformed requests.
+
+   - HTTP Request Smuggling:
+
+     Identify vulnerabilities in backend server communication by crafting malformed HTTP headers.
+
+   - OAuth Misconfigurations:
+
+     Exploit issues in OAuth flows, such as redirect URI validation.
+
+   - JSON Web Token (JWT) Attacks:
+
+     Test for weak signing algorithms, lack of signature validation, or token manipulation.
+
+   - Race Conditions:
+
+     Exploit simultaneous requests to access or modify resources improperly.
+
+   - GraphQL Exploitation:
+
+     Use introspection queries to map schemas and test for injection or data leakage vulnerabilities.
+
+   - Cache Poisoning:
+
+     Manipulate cache behavior to deliver malicious content to users.
+
+   - Deserialization Attacks:
+
+     Identify and exploit insecure deserialization of untrusted data in applications.
+
+   - Email Spoofing:
+
+     Test for improper SPF, DKIM, and DMARC configurations to send spoofed emails.
+
+   - LDAP Injection:
+
+     Manipulate LDAP queries to bypass authentication or retrieve sensitive information.
+
+   - DOM-Based XSS:
+
+     Analyze client-side scripts for unsafe handling of input, leading to XSS.
+
+
+
+5. Post-Exploitation
+
+   If a vulnerability is found, assess its full impact.
+
+
+
+   Validate:
+
+   - Data Exposure: Check for sensitive files or database entries.
+
+   - Privilege Escalation: Test for unauthorized access to higher privileges.
+
+   - System Control: Verify command execution or lateral movement.
+
+
+
+6. Reporting
+
+   Prepare a clear and detailed report for submission.
+
+
+
+   Components of a Good Report:
+
+   - Title: Concise summary of the issue (e.g., Reflected XSS on Login Page).
+
+   - Description: Explain the vulnerability, its impact, and affected components.
+
+   - Steps to Reproduce: Include clear instructions and payloads.
+
+   - Impact Assessment: Quantify the risk (e.g., data leakage, account takeover).
+
+   - Recommendations: Suggest fixes or mitigations.
+
+   - Proof of Concept (PoC): Provide screenshots, logs, or video demos.
+
+
+
+7. Staying Updated
+
+   Keep up with the latest techniques and tools.
+
+
+
+   Tips:
+
+   - Read bug bounty reports on platforms like HackerOne, Bugcrowd, or Medium.
+
+   - Follow researchers and attend conferences for new insights.
+
+   - Practice on labs like PortSwigger Academy, HackTheBox, or TryHackMe.
+
+
+
+8. Automation
+
+   Automate repetitive tasks to save time and increase efficiency.
+
+
+
+   Tools:
+
+   - LazyRecon: Automates subdomain and vulnerability discovery.
+
+   - BugBountyAutomation: Chains tools like subfinder, httpx, and nuclei.
+
+
+
+9. Ethics and Rules
+
+   Always follow ethical guidelines and program rules of engagement.
+
+   - Test only within scope.
+
+   - Avoid causing harm to systems or users.
+
+
+
+Happy Bug Hunting!
