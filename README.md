@@ -1,4 +1,4 @@
-Pentesting Wordlists / Tips, Tricks & References <br>
+|Pentesting Wordlists / Tips, Tricks & References| <br>
 
 🚀 Curated Wordlists for Ethical Hacking & Security Testing <br>
 This repository contains a comprehensive collection of wordlists for penetration testing, security assessments, and ethical hacking. These wordlists have been gathered, modified, and curated from multiple sources to ensure high-quality, effective results for various security tasks.
