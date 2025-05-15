@@ -1,0 +1,9 @@
+🔐 Tips to Bypass Upload Filters
+
+Use alternative extensions: Try .phtml, .php5, .phps, .php3, .phar, .inc.
+
+Double extensions: shell.php.jpg, shell.jpg.php, etc.
+
+MIME type spoofing: Modify upload requests with Content-Type: image/jpeg, even if it's PHP code.
+
+Use Burp Suite: Intercept the upload and tamper with filename and MIME type.
