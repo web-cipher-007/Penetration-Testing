@@ -31,3 +31,6 @@
 /api/v1/history/history
 /api/v1/monitoring/accounts
 /api/v1/monitoring/address-check
+/api/v1/user
+/api/v1/users
+/api/v1/admin
