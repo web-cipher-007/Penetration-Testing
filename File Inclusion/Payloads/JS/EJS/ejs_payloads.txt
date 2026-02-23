@@ -1,0 +1,3 @@
+<%= "CANARY_XXXXXXXX".toUpperCase() %>
+<%- "<b>CANARY_XXXXXXXX</b>" %> <!-- unescaped output -->
+<% if (true) { %>RUN_CANARY_XXXXXXXX<% } %>
