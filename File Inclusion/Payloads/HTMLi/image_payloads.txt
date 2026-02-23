@@ -1,0 +1,31 @@
+<!-- SVG01: onload handler -->
+<svg xmlns="http://www.w3.org/2000/svg" onload="console.log('SVG01');alert('SVG01')"/>
+
+<!-- SVG02: embedded script CDATA -->
+<svg xmlns="http://www.w3.org/2000/svg"><script><![CDATA[
+  console.log('SVG02'); alert('SVG02');
+]]></script></svg>
+
+<!-- SVG03: animate + onbegin event -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <circle r="40" onbegin="alert('SVG03')">
+    <animate attributeName="r" from="0" to="1" dur="0.01s" begin="0s"/>
+  </circle>
+</svg>
+
+<!-- SVG04: foreignObject HTML-in-SVG -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="120" height="50">
+    <body xmlns="http://www.w3.org/1999/xhtml"><script>alert('SVG04')</script></body>
+  </foreignObject>
+</svg>
+
+<!-- SVG05: external script (same-origin + CSP) -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <script xlink:href="/__probe__/ext.js"></script>
+</svg>
+
+<!-- SVG06: image onerror inside SVG -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <image href="x" onerror="alert('SVG06')"/>
+</svg>
