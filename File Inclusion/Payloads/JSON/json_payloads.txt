@@ -1,0 +1,5 @@
+{"probe":"JSON01","canary":"CANARY_XXXXXXXX"}
+{"probe":"JSON02","msg":"<img src=x onerror=alert('JSON02:CANARY_XXXXXXXX')>"}
+{"probe":"JSON03","msg":"</script><script>document.title='JSON03:CANARY_XXXXXXXX'</script>"}
+{"probe":"JSON04","__proto__":{"pp":"JSON04:CANARY_XXXXXXXX"}}
+{"probe":"JSON05","msg":"`CANARY_XXXXXXXX-${7*7}`"}
