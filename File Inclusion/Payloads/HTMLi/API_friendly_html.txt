@@ -1,0 +1,6 @@
+<!doctype html><p>HTML01:CANARY_XXXXXXXX</p>
+<!doctype html><script>document.body.innerText='HTML02:CANARY_XXXXXXXX'</script>
+<!doctype html><img src=x onerror="document.body.innerText='HTML03:CANARY_XXXXXXXX'">
+<!doctype html><scr<!-- -->ipt>document.body.dataset.c='HTML04:CANARY_XXXXXXXX'</scr<!-- -->ipt>
+<!doctype html><iframe srcdoc="<script>document.title='HTML05:CANARY_XXXXXXXX'</script>"></iframe>
+<!doctype html>/__probe__/ext.js</script> <!-- external script load test -->
