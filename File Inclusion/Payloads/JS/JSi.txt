@@ -1,0 +1,11 @@
+process.exit(1);
+require('child_process').execSync('whoami').toString();
+console.log('JS01:CANARY_XXXXXXXX');
+globalThis.__canary__ = 'JS02:CANARY_XXXXXXXX';
+document.body?.insertAdjacentHTML('afterbegin','<p id=JS03>JS03:CANARY_XXXXXXXX</p>');
+alert('JS04:CANARY_XXXXXXXX');
+fetch('/__probe__/JS05?c=CANARY_XXXXXXXX',{method:'POST'}).catch(()=>{});
+const s=document.createElement('script'); s.src='/__probe__/ext.js'; document.head.appendChild(s); 
+eval("console.log('JS07:CANARY_XXXXXXXX')"); // CSP inline policy probe
+(new Function("console.log('JS08:CANARY_XXXXXXXX')"))(); // CSP variant
+import('/__probe__/mod.js').catch(e=>console.log('JS09:CANARY_XXXXXXXX',e?.name)); 
