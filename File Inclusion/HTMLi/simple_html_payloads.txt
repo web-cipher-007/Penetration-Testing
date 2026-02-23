@@ -1,0 +1,30 @@
+<!-- HTML01: inline script -->
+<!doctype html><meta charset=utf-8><script>console.log('HTML01');alert('HTML01')</script>
+
+<!-- HTML02: img onerror -->
+<!doctype html><img src=x onerror="console.log('HTML02');alert('HTML02')">
+
+<!-- HTML03: broken script tags (sanitizer evasion smoke) -->
+<!doctype html><scr<!-- -->ipt>console.log('HTML03');alert('HTML03')</scr<!-- -->ipt>
+
+<!-- HTML04: entity-encoded script tag -->
+<!doctype html><scr&#x69;pt>alert('HTML04')</scr&#x69;pt>
+
+<!-- HTML05: URI JS protocol (should be blocked if treated as HTML only) -->
+<!doctype html><a href="javascript:alert('HTML05')">go</a>
+
+<!-- HTML06: event split across lines -->
+<!doctype html><img src=x o
+nerror=alert('HTML06')>
+
+<!-- HTML07: iframe srcdoc -->
+<!doctype html><iframe srcdoc="<script>alert('HTML07')</script>"></iframe>
+
+<!-- HTML08: template injection indicator + inline JS -->
+<!doctype html>{{7*7}}<script>console.log('HTML08')</script>
+
+<!-- HTML09: DOM clobbering probe -->
+<!doctype html><form id=innerHTML></form><script>alert('HTML09')</script>
+
+<!-- HTML10: external script (CSP/script-src test) -->
+<!doctype html><script src="/__probe__/ext.js"></script>
