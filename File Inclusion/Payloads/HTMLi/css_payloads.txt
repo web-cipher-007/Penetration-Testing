@@ -1,0 +1,9 @@
+/* CSS01: javascript: URL (should not execute in modern browsers) */
+body{background-image:url("javascript:alert('CSS01')");}
+
+/* CSS02: import external (CSP/network visibility) */
+@import url("/__probe__/CSS02.css");
+
+/* CSS03: expression() legacy (IE only, historical) */
+div{width: expression(alert('CSS03'));}
+``
