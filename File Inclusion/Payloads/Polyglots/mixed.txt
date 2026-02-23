@@ -1,0 +1,9 @@
+\x89PNG\r\n\x1a\n
+<!-- POLY01 --><script>alert('POLY01')</script>
+
+%PDF-1.5
+<!doctype html><script>alert('POLY02')</script>
+
+GIF89a
+<img src=x onerror=alert('POLY03')>
+
