@@ -1,0 +1,15 @@
+application/javascript
+text/javascript
+application/ecmascript
+text/ecmascript
+application/x-javascript
+text/html
+image/svg+xml
+application/json
+text/plain
+application/octet-stream
+multipart/form-data
+application/x-www-form-urlencoded
+image/png
+image/jpeg
+application/pdf
