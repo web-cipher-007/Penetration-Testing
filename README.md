@@ -1,25 +1,26 @@
-| Pentesting Wordlists / Tips, Tricks & References | <br>
+# Pentesting Methodology — Wordlists & References
 
-🚀 Curated Wordlists for Ethical Hacking & Security Testing <br>
-This repository contains a comprehensive collection of wordlists for penetration testing, security assessments, and ethical hacking. These wordlists have been gathered, modified, and curated from multiple sources to ensure high-quality, effective results for various security tasks.
+A curated collection of testing methodologies, wordlists, references, and various resources for web penetration testing, security assessments, and ethical hacking. Lists have been sourced, modified, and optimized from multiple public repositories for practical, real-world use.
 
-📌 What’s Inside? <br>
-🔹 Common Password Lists – Default credentials, leaked passwords, and brute-force attack wordlists. <br>
-🔹 Fuzzing Wordlists – Files, directories, parameters, and payloads for web fuzzing. <br>
-🔹 Subdomain & DNS Enumeration – Wordlists for discovering subdomains and DNS records. <br>
-🔹 Web Exploitation – SQL injection, XSS, LFI, SSRF, and other attack vectors. <br>
-🔹 Custom Wordlists – Modified and optimized lists from various sources for better results. <br>
-🔹 Optimized Tips, tricks & various other references/materials for penetration tester/bug hunters. <br>
+## Contents
 
-⚠️ Disclaimer <br>
-This repository is intended strictly for ethical hacking, security research & legal testing purposes. Unauthorized use of these wordlists for illegal purposes is prohibited. The author is not responsible for any misuse. <br>
+- **Methodology** — Various testing methodologies & checklists
+- **Password Lists** — Default credentials, leaked passwords, and brute-force wordlists
+- **Fuzzing Wordlists** — Files, directories, parameters, and web payloads
+- **Subdomain & DNS Enumeration** — Lists for subdomain discovery and DNS record enumeration
+- **Web Exploitation** — SQLi, XSS, LFI, SSRF, and related attack vectors
+- **Custom Lists** — Modified and optimized variants for improved coverage
+- **References** — Tips, tricks, and supplementary materials for pentesters and bug hunters
 
-💡 Contributions & Credits <br>
-This repository is a collection of multiple publicly available sources, modified and enhanced for better usability for me. If you have suggestions, feel free to contribute or open an issue! <br>
-Original sources: <br>
-1) https://github.com/swisskyrepo/PayloadsAllTheThings <br>
-2) https://github.com/coffinxp/payloads/tree/main <br>
-3) https://github.com/danielmiessler/SecLists/tree/master <br>
+## Disclaimer
 
-Thank you for visiting! <br>
-Keep grinding & growing!
+This repository is intended solely for ethical hacking, authorized security research, and legal testing. Unauthorized or illegal use is strictly prohibited. The author assumes no responsibility for misuse.
+
+## Credits & Contributions
+
+Built on top of several excellent public resources:
+- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+- [coffinxp/payloads](https://github.com/coffinxp/payloads/tree/main)
+- [SecLists](https://github.com/danielmiessler/SecLists/tree/master)
+
+Suggestions and contributions are welcome — feel free to open an issue or PR.
