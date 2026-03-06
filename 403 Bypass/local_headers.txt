@@ -1,0 +1,137 @@
+# STANDARD & COMMON PROXY
+X-Forwarded-For
+X-Forwarded
+X-Forwarded-Host
+X-Forwarded-Server
+X-Forwarded-Proto
+X-Forwarded-Port
+Forwarded
+Forwarded-For
+X-Real-IP
+X-Client-IP
+X-Remote-IP
+X-Remote-Addr
+X-Host
+
+# APPLICATION / LEGACY / FRAMEWORK
+Client-IP
+Proxy-Client-IP
+WL-Proxy-Client-IP
+HTTP-Client-IP
+HTTP-X-Forwarded-For
+HTTP-X-Forwarded
+HTTP-X-Real-IP
+HTTP-True-IP
+X-Originating-IP
+X-Cluster-Client-IP
+X-ProxyUser-IP
+X-ProxyUserIP
+X-Remote-User
+X-Forwarded-By
+X-Forwarded-From
+X-ProxyUser
+X-Requested-With
+X-Request-ID
+
+
+# ---- Cloudflare ----
+CF-Connecting-IP
+CF-Pseudo-IP
+True-Client-IP
+CF-True-Client-IP
+CF-Connecting-IPv6
+
+# ---- Akamai ----
+X-Akamai-Edgescape
+X-Akamai-Forwarded-For
+Akamai-Origin-Hop
+True-Client-IP
+
+# ---- Fastly ----
+Fastly-Client-IP
+Fastly-SSL
+
+# ---- AWS / ELB / ALB ----
+X-Forwarded-Client-Cert
+X-Amzn-Trace-Id
+X-Amzn-Client-IP
+X-Forwarded-Proto
+X-Forwarded-Port
+
+# ---- Google Cloud / App Engine ----
+X-Appengine-User-IP
+X-Appengine-Remote-Addr
+X-Client-Data
+
+# ---- Azure ----
+X-Azure-ClientIP
+X-Azure-FDID
+
+# ---- CloudFront ----
+CloudFront-Viewer-Address
+
+# ---- Vercel / Edge ----
+X-Real-IP
+X-Vercel-IP-Country
+X-Vercel-IP
+
+
+# ENTERPRISE / SECURITY / LOAD BALANCERS
+X-True-IP
+X-Original-Remote-Addr
+X-Original-Forwarded-For
+X-Original-Host
+X-Original-IP
+X-Original-URL
+X-Real-Host
+X-Client-Host
+X-Client-Address
+X-Forwarded-Client
+X-Remote-Address
+X-Authenticated-User
+X-Authenticated-Client
+
+
+# RARE / INTERNAL / ISP / TELECOM
+X-ClientSide-IP
+X-Forwarded-Client-IP
+X-Device-IP
+X-IP
+X-Remote
+X-Forward-IP
+X-User-IP
+
+# WEBSERVER-SPECIFIC
+
+# ---- Nginx ----
+X-Nginx-Proxy
+X-Nginx-Client-IP
+
+# ---- HAProxy ----
+X-Haproxy-Server-State
+X-Haproxy-Client-IP
+
+# ---- Apache ----
+X-Http-Forwarded-For
+X-Http-Forwarded
+X-Http-Real-IP
+
+# TYPO / BYPASS / OBFUSCATED VARIANTS
+X-Forwared-For
+X-Forwaded-For
+X-Forwrded-For
+X-Forwarfed-For
+X-Forawrded-For
+X-Fowarded-For
+X-Fowardedfor
+X-Fowarded-Ip
+X-Forawrded-IP
+X-Forwared_IP
+X-Forwrded_IP
+X-Forwwarded-For
+X-Foarwrded-For
+X-Fwd-For
+X-Fwrd-For
+X-Fwd-IP
+X-FW-For
+X-FWRD-For
